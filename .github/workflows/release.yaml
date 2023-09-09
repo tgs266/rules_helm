@@ -18,7 +18,6 @@ env:
 
 jobs:
   release:
-    if: ${{ github.repository_owner == 'abrisco' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
