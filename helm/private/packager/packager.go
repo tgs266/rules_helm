@@ -421,18 +421,18 @@ func main() {
 	install_helm_content(tmp_path, stamped_chart_content, stamped_values_content, args.templates_manifest, args.deps_manifest)
 
 	// Build the helm package
-	command := exec.Command(path.Join(cwd, args.helm), "package", ".")
+	command := exec.Command(path.Join(cwd, args.helm), "package", ".", "--debug")
 	command.Dir = tmp_path
 	out, err := command.Output()
 	if err != nil {
-		os.Stderr.WriteString(string(out))
+		log.Info(string(out))
 		log.Fatal(err)
 	}
 
 	// Locate the package file
 	pkg, err := find_generated_package(string(out))
 	if err != nil {
-		os.Stderr.WriteString(string(out))
+		log.Info(string(out))
 		log.Fatal(err)
 	}
 
