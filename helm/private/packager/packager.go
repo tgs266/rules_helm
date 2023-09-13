@@ -423,6 +423,8 @@ func main() {
 	// Build the helm package
 	command := exec.Command(path.Join(cwd, args.helm), "package", ".", "--debug")
 	command.Dir = tmp_path
+	command.Stdout = os.Stdout 
+	command.Stderr = os.Stdout
 	out, err := command.Output()
 	if err != nil {
 		log.Println(string(out))
