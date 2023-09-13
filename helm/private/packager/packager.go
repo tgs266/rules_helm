@@ -424,7 +424,7 @@ func main() {
 	command := exec.Command(path.Join(cwd, args.helm), "package", ".", "--debug")
 	command.Dir = tmp_path
 	command.Stdout = os.Stdout 
-	command.Stderr = os.Stdout
+	command.Stderr = os.Stderr
 	out, err := command.Output()
 	if err != nil {
 		log.Println(string(out))
