@@ -425,14 +425,14 @@ func main() {
 	command.Dir = tmp_path
 	out, err := command.Output()
 	if err != nil {
-		log.Info(string(out))
+		log.Println(string(out))
 		log.Fatal(err)
 	}
 
 	// Locate the package file
 	pkg, err := find_generated_package(string(out))
 	if err != nil {
-		log.Info(string(out))
+		log.Println(string(out))
 		log.Fatal(err)
 	}
 
